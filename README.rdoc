@@ -1,0 +1,11 @@
+== Fundementals of Angular.js
+
+Following on from Dan Wahlin's tutorial on 'AngularJS in 60ish minutes', I pretty much note down the core basics of coding a SPA (Single Page Application) using HTML and Angular.js. I have commented most of the code and most of it seems like basic (that is if you are familiarised with MVVM or MVC). Either way enjoy! 
+
+== Set up and running the application:
+
+1. Clone Repository
+
+2. Paste contents on your web server and open. If <tt>127.0.0.1</tt> then visit <tt>localhost/angular</tt>
+
+4. The code is organised into relevant files and folders so just click to see angular in action.
