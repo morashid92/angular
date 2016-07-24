@@ -4,8 +4,6 @@ Following on from Dan Wahlin's tutorial on 'AngularJS in 60ish minutes', I prett
 
 == Set up and running the application:
 
-1. Clone Repository
+1. Clone Repository into your web server and open. If <tt>127.0.0.1</tt> then visit <tt>localhost/angular</tt>
 
-2. Paste contents on your web server and open. If <tt>127.0.0.1</tt> then visit <tt>localhost/angular</tt>
-
-4. The code is organised into relevant files and folders so just click to see angular in action.
+2. The files and folders are relevant to the code implemented so just click on them to see angular in action.
