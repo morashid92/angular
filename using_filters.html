@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html data-ng-app="">
+<head>
+
+	<title>Using Filters</title>
+</head>
+<!-- use array of objects instead of strings with ng-init -->
+<body data ng-init="customers=[{name:'John Smith', city:'Phoenix'}, {name:'John Doe', city:'New York'}, {name:'Jane Doe', city:'San Fransisco'}]">
+	Name:
+	<br />
+	<input type="text" data-ng-model="name" />
+{{ name }}
+	<br />
+	<ul>
+		<!-- use filters with ng-repeat to filter by name and city with specific objects and properties using "pipes". Likewise we can apply filters with data binding expressions -->
+		<li data-ng-repeat="cust in customers | filter:name | orderBy: 'city'"> {{cust.name | uppercase }} - {{cust.city | lowercase}}</li>
+	</ul>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</body>
+</html>

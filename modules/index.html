@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- define demoApp module -->
+<html data-ng-app="demoApp">
+<head>
+<title>AngialrJS Modules</title>
+</head>
+
+<body>
+	<div data-ng-controller = "SimpleController" >
+		Name:
+		<br />
+		<input type="text" data-ng-model="name" /> {{ name }}
+		<br />
+		<ul>
+			<li data-ng-repeat="cust in customers | filter:name | orderBy: 'city'"> {{cust.name | uppercase }} - {{cust.city | lowercase}}</li>
+		</ul>
+	</div>	
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+<!-- Iniialize demoApp module, name it and say we are not depending on any external dependency. 
+Create an anonymus function by using controller method with SimpleController as a string. Use scope
+to bind with customers in view. -->
+	<script>
+	var demoApp = angular.module('demoApp', []);
+	demoApp.controller('SimpleController', 	function ($scope){
+		$scope.customers = [
+			{name:'John Smith', city:'Phoenix'}, 
+			{name:'John Doe', city:'New York'}, 
+			{name:'Jane Doe', city:'San Fransisco'}
+		];
+	});
+	</script>
+</body>
+</html>

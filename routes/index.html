@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!-- define demoApp module -->
+<html data-ng-app="demoApp">
+<head>
+<title>AngualrJS Adding Routes</title>
+</head>
+
+<body>
+	<div>
+		<!-- Placeholder for views, (newer versions don't like the quotes after data-ng-view so I did't add it)  -->
+		<div data-ng-view></div>
+	</div>	
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+
+
+	<script>
+	//load the module (after angular 1.2.0, you must explicitly use ngRoute to its own module)
+	var demoApp = angular.module('demoApp', ['ngRoute']);
+
+	//define the routes, hook up the controller to the view
+	demoApp.config(function ($routeProvider) {
+		$routeProvider
+			.when('/',
+				{
+					controller: 'SimpleController',
+					templateUrl: 'partials/view1.html'
+				})
+			.when('/view2',
+				{
+					controller: 'SimpleController',
+					templateUrl: 'partials/view2.html'
+				})
+			.otherwise({ redirectTo: '/' });
+
+	});
+	/* the data that binds to the view can be removed from the scope and factory 
+	can be used as an alternative. create the factory where function is the object */ 
+	
+	demoApp.factory('simpleFactory', function(){
+		var customers = [
+			{name:'John Smith', city:'Phoenix'}, 
+			{name:'John Doe', city:'New York'}, 
+			{name:'Jane Doe', city:'San Fransisco'}
+		];
+
+	//initialize factory object
+	var factory = {};
+	factory.getCustomers = function(){
+		return customers;
+	};
+	//post could be used for a RESTful API (CRUD operations)
+	factory.postCustomer = function (customer) {
+
+	};
+	//return customers
+	return factory;
+	});
+
+		demoApp.controller('SimpleController', 	function ($scope, simpleFactory){
+		$scope.customers = [];
+		init();
+		//what the controller passes down to view could be used for dropdowns etc.
+		function init(){
+			$scope.customers = simpleFactory.getCustomers();
+		}
+
+	//the data that binds to the view removed    	
+	/*
+		demoApp.controller('SimpleController', 	function ($scope){
+			$scope.customers = [
+				{name:'John Smith', city:'Phoenix'}, 
+				{name:'John Doe', city:'New York'}, 
+				{name:'Jane Doe', city:'San Fransisco'}
+			];
+	*/
+	//write function to push the inserted data using ng-click into the array using object literals. 
+		$scope.addCustomer = function() {
+			$scope.customers.push(
+				{ 
+					name: $scope.newCustomer.name, 
+					city: $scope.newCustomer.city
+				});
+		};
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!-- a directive (anything that allows extention of html to add properties/comments etc ) -->
+<html data-ng-app="">
+<head>
+
+	<title>AngualrJS Directives and Data Binding</title>
+</head>
+<body>
+	Name:
+	<br />
+	<!-- ng-model directive with a name property followed by a data binding expression (data binding expression allows to bind to the property)-->
+	<input type="text" data-ng-model="name" />
+{{ name }}
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</body>
+</html>
